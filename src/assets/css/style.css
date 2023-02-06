@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    overflow-y: scroll !important;
+}
+#app {
+    height: 100%;
+}
+.r {
+    border-radius: 4px 4px 4px 4px !important;
+}
+.rl-0 {
+    border-radius: 0px 4px 4px 0px !important;
+}
+.rr-0 {
+    border-radius: 4px 0px 0px 4px !important;
+}
+html {
+    overflow-y: hidden;
+}
+body {
+    position: relative;
+}
+#header {
+    border-bottom: 1px solid #8080802b;
+}
+#main {
+    position: relative;
+    /* height: 90.5vh; */
+}
+.footer {
+    padding: 1em 0;
+    /* padding: 1em 0; */
+    /* position: absolute; */
+    width: 100%;
+    bottom: 0;
+}
+
+/* vue-plyr */
+.plyr__controls {
+    border: 1px solid #e1dfdf;
+    border-radius: 4px;
+}
+@media screen and (max-width: 1024px) {
+    .p-32 {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
