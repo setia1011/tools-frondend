@@ -1,12 +1,17 @@
 <template>
     <div id="main" class="container is-max-desktop p-32 mt-5">
-        <h1 class="is-size-5 mb-5 has-text-weight-bold">Exam</h1>
+        <button class="button is-small mb-5">
+            <span class="icon">
+                <i class="fa-thin fa-note"></i>
+            </span>
+            <span>Exam List</span>
+        </button>
         <div v-if="show">
-            <h2 class="is-size-5 mb-5 has-text-weight-bold">Test</h2>
+            <h2 class="is-size-5 mb-5 has-text-weight-bold">{{ session_show }}</h2>
         </div>
         <div v-if="!show">
-            <div class="tile is-ancestor" v-for="(item, index) in sessions" :key="item.id">
-                <div v-on:click="fetchQuestions(item.id)" class="tile is-parent is-3" style="cursor: pointer;">
+            <div class="tile is-ancestor">
+                <div v-for="(item, index) in sessions" :key="item.id" v-on:click="fetchQuestions(item.id)" class="tile is-parent is-3" style="cursor: pointer;">
                     <article class="tile is-child box">
                         <figure class="image is-4by3">
                             <img src="https://bulma.io/images/placeholders/640x480.png">
@@ -29,16 +34,27 @@
                 </div>
                 </div>
             </div>
+            <div class="mt-4">
+                <button class="button is-small" v-on:click="backTo">
+                    <span class="icon">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </span>
+                    <span>Back</span>
+                </button>
+            </div>
         </div>
     </div>
 </template>
   
   <script>
+import { throwStatement } from '@babel/types';
+
   export default {
     name: 'ExamStudent',
     data() {
         return {
             show: false,
+            session_show: null,
             sessions: [],
             questions: []
         }
@@ -62,11 +78,26 @@
             await this.axios.post("http://127.0.0.1:8000/quiz/question-by-session", {
                 session_id: v
             }).then((res) => {
-                this.questions = res.data;
-                this.show = true;
-                console.log(this.questions);
+                if (res.data) {
+                    this.session_show = res.data[0].ref_session.session;
+                    this.questions = res.data;
+                    this.show = true;
+                    console.log(this.questions);
+                }
             })
+        },
+        backTo: function() {
+            this.show = false;
+            this.sessions = [];
+            this.questions = [];
+            this.fetchSessions();
         }
     }
   }
   </script>
+
+<style scoped>
+    .box {
+        box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0px 0 1px hsl(348deg 83% 42% / 28%) !important;
+    }
+</style>
