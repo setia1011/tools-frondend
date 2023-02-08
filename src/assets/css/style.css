@@ -3,7 +3,7 @@
     padding: 0;
 }
 html {
-    overflow-y: scroll !important;
+    overflow-y: auto !important;
 }
 #app {
     height: 100%;
@@ -28,7 +28,7 @@ body {
 }
 #main {
     position: relative;
-    /* height: 90.5vh; */
+    min-height: 83.7vh;
 }
 .footer {
     padding: 1em 0;
