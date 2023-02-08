@@ -1,18 +1,26 @@
 <template>
     <div id="main" class="container is-max-desktop p-32 mt-5">
-        <button class="button is-small is-primary is-outlined mb-5" v-on:click="backTo">
+        <button v-if="!show" class="button is-small is-dark mb-5" v-on:click="backTo">
             <span class="icon">
                 <i class="fa-thin fa-note"></i>
             </span>
             <span>Exam List</span>
+        </button>
+        <button v-if="show" class="button is-small is-primary is-outlined mb-5" v-on:click="backTo">
+            <span class="icon">
+                <i class="fa-solid fa-arrow-left"></i>
+            </span>
+        </button>
+        <button v-if="show" class="button ml-1 is-small is-warning is-outlined mb-5" v-on:click="resetAnswers(questions[0].session_id)">
+            <span class="icon">
+                <i class="fa-solid fa-timer"></i>
+            </span>
         </button>
         <div v-if="show" class="mb-5">
             <h2 class="is-size-5 has-text-weight-bold">{{ session_title }}</h2>
             <span>{{ session_description }}</span>
         </div>
         <div v-if="!show">
-            <!-- <button @click="aboutPage()">About</button> -->
-            <!-- <a href="exam-focus" target="_blank">Link</a> -->
             <div class="tile is-ancestor">
                 <div v-for="(item, index) in sessions" :key="item.id" v-on:click="fetchQuestions(item.id)" class="tile is-parent is-3" style="cursor: pointer;">
                     <article class="tile is-child box">
@@ -76,11 +84,9 @@
 </template>
   
 <script>
-import { throwStatement } from '@babel/types';
-
-  export default {
-    name: 'ExamStudent',
-    data() {
+export default {
+name: 'ExamFocusView',
+data() {
         return {
             show: false,
             session_id: null,
@@ -104,10 +110,6 @@ import { throwStatement } from '@babel/types';
         this.fetchSessions();
     },
     methods: {
-        // aboutPage() {
-        //     let route = this.$router.resolve({ path: "/exam-focus" , query: {'s': 34}});
-        //     window.open(route.href);
-        // },
         fetchSessions: async function() {
             await this.axios.get("http://127.0.0.1:8000/quiz/session", {
                 data: null
@@ -163,7 +165,7 @@ import { throwStatement } from '@babel/types';
             this.fetchSessions();
         },
         resetSession: function() {
-            this.show = false;
+            // this.show = false;
             this.session_id = null;
             this.session_title = null;
             this.session_description = null;
@@ -172,13 +174,23 @@ import { throwStatement } from '@babel/types';
             this.selected_answer_id = null;
             this.answers = null;
             this.counter = 0;
+        },
+        resetAnswers: function() {
+            this.fetchQuestions(1);
+            this.selected_answer_id = null;
+            this.answers = null;
+            this.counter = 0;
         }
     }
-  }
+}
 </script>
 
-<style scoped>
-    .box {
-        box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0px 0 1px hsl(348deg 83% 42% / 28%) !important;
+<style>
+    #header {
+        display: none !important;
+    }
+    footer {
+        display: none !important;
     }
 </style>
+  

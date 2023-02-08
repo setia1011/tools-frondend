@@ -36,6 +36,7 @@
                             <div class="navbar-dropdown">
                                 <router-link to="/exam-administrator" class="navbar-item">Administrator</router-link>
                                 <router-link to="/exam-student" class="navbar-item">Student</router-link>
+                                <router-link to="/exam-focus" class="navbar-item">Student (Focus)</router-link>
                             </div>
                         </div>
                         <a class="navbar-item" target="_blank" href="https://apitools.codex.id">API</a>
