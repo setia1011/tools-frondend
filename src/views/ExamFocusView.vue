@@ -6,12 +6,12 @@
             </span>
             <span>Exam List</span>
         </button>
-        <button v-if="show" class="button is-small is-primary is-outlined mb-5" v-on:click="backTo">
+        <button v-if="show" class="button is-small is-dark is-outlined mb-5" v-on:click="backTo">
             <span class="icon">
                 <i class="fa-solid fa-arrow-left"></i>
             </span>
         </button>
-        <button v-if="show" class="button ml-1 is-small is-warning is-outlined mb-5" v-on:click="resetAnswers(questions[0].session_id)">
+        <button v-if="show" class="button ml-1 is-small is-success is-outlined mb-5" v-on:click="resetAnswers(questions[0].session_id)">
             <span class="icon">
                 <i class="fa-solid fa-timer"></i>
             </span>
@@ -62,7 +62,7 @@
                                         <span class="tag is-danger">0</span>
                                         </div>
                                     </div>
-                                    <!-- <span>answer: {{ i.r_answer }}</span> -->
+                                    <span class="is-underlined">answer: {{ i.r_answer }}</span>
                                 </span>
                             </span>
                         </div>
@@ -186,6 +186,9 @@ data() {
 </script>
 
 <style>
+    #main {
+        margin-bottom: 30px !important;   
+    }
     #header {
         display: none !important;
     }
