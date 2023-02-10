@@ -4,7 +4,7 @@
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
                     <router-link class="navbar-item" to="/">
-                        <img alt="Logo" src="../assets/images/add-512.png" height="28">
+                        <img alt="Logo" src="../../assets/images/add-512.png" height="28">
                     </router-link>
                     <a role="button" data="1" id="nav1" class="navix navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
                         <span aria-hidden="true"></span>

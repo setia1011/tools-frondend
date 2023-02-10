@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            <div class="mt-5">
+            <div class="mt-5 mb-6">
                 <button class="button is-small is-dark" v-on:click="checkAnswers">
                     <!-- <span class="icon">
                         <i class="fa-solid fa-arrow-left"></i>
@@ -184,16 +184,3 @@ data() {
     }
 }
 </script>
-
-<style>
-    #main {
-        margin-bottom: 30px !important;   
-    }
-    #header {
-        display: none !important;
-    }
-    footer {
-        display: none !important;
-    }
-</style>
-  
