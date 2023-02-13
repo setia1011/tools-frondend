@@ -36,22 +36,25 @@
                             <div class="navbar-dropdown">
                                 <router-link to="/exam-administrator" class="navbar-item">Administrator</router-link>
                                 <router-link to="/exam-student" class="navbar-item">Student</router-link>
-                                <router-link to="/exam-focus" class="navbar-item">Student (Focus)</router-link>
+                                <router-link to="/exam-focus" target="_blank" class="navbar-item">Student (Focus)</router-link>
                             </div>
                         </div>
-                        <a class="navbar-item" target="_blank" href="https://apitools.codex.id">API</a>
+                        <a class="navbar-item" target="_blank" href="https://api-tools.codex.id">API</a>
                     </div>
                     
                     <div class="navbar-end">
                         <div class="navbar-item">
                             <div class="buttons">
-                                <!-- <a class="button is-primary has-background-white has-text-primary">
-                                    <strong>Hi.. Setia</strong>
-                                </a> -->
-                                <router-link to="/" class="exit button is-light">
-                                    <!-- <i class="fa-brands fa-square-github"></i> -->
+                                <a class="button is-small has-background-white has-text-primary">
+                                    <strong>Hi.. {{ store?.userInfo?.name }}</strong>
+                                </a>
+                                <span class="button is-small is-outlined is-danger" v-on:click="userExit">
+                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                </span>
+                                <!-- <router-link to="/" class="exit button is-light">
+                                    <i class="fa-brands fa-square-github"></i>
                                     <i class="fa-brands fa-github"></i>
-                                </router-link>
+                                </router-link> -->
                             </div>
                         </div>
                     </div>
@@ -64,14 +67,22 @@
 </template>
 
 <script>
+import { authStore } from "@/stores/auth";
+
 export default {
     name: 'Header',
-    props: {
-        msg: String
+    setup() {
+        const store = authStore();
+        return { store };
     },
     data() {
         return {
-            
+            name: null
+        }
+    },
+    methods: {
+        userExit: async function() {
+            await this.store.userExit();      
         }
     }
 }

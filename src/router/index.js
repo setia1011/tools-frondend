@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
-import Login from '@/layouts/Login.vue'
-import First from '@/layouts/First.vue'
-import Focus from '@/layouts/Focus.vue'
+import Login from '@/templates/Login.vue'
+import First from '@/templates/First.vue'
+import Focus from '@/templates/Focus.vue'
+import { authStore } from '@/stores/auth'
 
 const routes = [
     {
-        path: '/login',
-        name: 'Login',
+        path: '/user-login',
+        name: 'login',
         component: () => import('../views/LoginView.vue'),
         meta: {layout: Login}
     },
@@ -55,37 +55,37 @@ const routes = [
     },
     {
         path: '/video-to-audio-wav',
-        name: 'video to audio wav',
+        name: 'vide2audio',
         component: () => import('../views/VideoToAudioView.vue'),
         meta: {layout: First}
     },
     {
         path: '/text-to-speech',
-        name: 'text to speech',
+        name: 'text2speech',
         component: () => import('../views/TTSView.vue'),
         meta: {layout: First}
     },
     {
         path: '/sentiment-analysis',
-        name: 'sentiment analysis',
+        name: 'senti',
         component: () => import('../views/SentiView.vue'),
         meta: {layout: First}
     },
     {
         path: '/exam-administrator',
-        name: 'exam administrator',
+        name: 'exam-administrator',
         component: () => import('../views/ExamAdministratorView'),
         meta: {layout: First}
     },
     {
         path: '/exam-student',
-        name: 'exam student',
+        name: 'exam-student',
         component: () => import('../views/ExamStudentView.vue'),
         meta: {layout: First}
     },
     {
         path: '/exam-focus',
-        name: 'exam focus',
+        name: 'exam-focus',
         component: () => import('../views/ExamFocusView.vue'),
         meta: {layout: Focus}
     }
@@ -96,13 +96,16 @@ const router = createRouter({
     routes
 })
 
-const isAuthenticated = true;
-
-router.beforeEach((to, from, next) => {
-    if (to.name !== 'Login' && !isAuthenticated) {
-        next({name: 'Login'});
+router.beforeResolve(async to => {
+    const token = window.$cookies.get('token');
+    if (to.name !== 'Login') {
+        const store = authStore();
+        store.fetchUser();
+        console.log('going to authenticated pages...');
     } else {
-        next();
+        if (token) {
+            router.push('/');
+        }
     }
 });
 
