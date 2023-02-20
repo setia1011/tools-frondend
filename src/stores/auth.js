@@ -22,6 +22,8 @@ export const authStore = defineStore("auth", {
             }).catch((res) => {
                 cookies.remove('token');
                 this.userInfo = null;
+                console.log(res.data);
+                router.push('/user-login');
             })
         },
         async userLogin(username, password) {

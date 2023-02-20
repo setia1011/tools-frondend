@@ -5,6 +5,9 @@
 html {
     overflow-y: auto !important;
 }
+.border {
+    border: 1px solid #e1e1e1;
+}
 #app {
     height: 100%;
 }

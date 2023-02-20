@@ -39,13 +39,22 @@
                                 <router-link to="/exam-focus" target="_blank" class="navbar-item">Student (Focus)</router-link>
                             </div>
                         </div>
-                        <a class="navbar-item" target="_blank" href="https://api-tools.codex.id">API</a>
+                        <router-link class="navbar-item" to="/users-list">Users</router-link>
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <div class="navbar-link">External</div>
+                            <div class="navbar-dropdown">
+                                <a href="https://editsvgcode.com/" target="_blank" class="navbar-item">SVG Creator</a>
+                                <a href="https://loading.io/" target="_blank" class="navbar-item">Loading.IO</a>
+                                <a href="https://skeletonreact.com/" target="_blank" class="navbar-item">Shimmer Creator</a>
+                                <a href="https://www.svgrepo.com/" target="_blank" class="navbar-item">SVGREPO</a>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="navbar-end">
                         <div class="navbar-item">
                             <div class="buttons">
-                                <a class="button is-small has-background-white has-text-primary">
+                                <a class="button is-small has-background-white has-text-dark">
                                     <strong>Hi.. {{ store?.userInfo?.name }}</strong>
                                 </a>
                                 <span class="button is-small is-outlined is-danger" v-on:click="userExit">

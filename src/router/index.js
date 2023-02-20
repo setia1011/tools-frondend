@@ -18,9 +18,15 @@ const routes = [
         meta: {layout: First}
     },
     {
+        path: '/users-list',
+        name: 'users-list',
+        component: () => import('../views/UsersListView.vue'),
+        meta: {layout: First}
+    },
+    {
         path: '/about',
         name: 'about',
-        component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+        component: () => import('../views/AboutView.vue'),
         meta: {layout: First}
     },
     {
@@ -96,9 +102,10 @@ const router = createRouter({
     routes
 })
 
-router.beforeResolve(async to => {
+router.beforeEach(async to => {
+    console.log(to.name);
     const token = window.$cookies.get('token');
-    if (to.name !== 'Login') {
+    if (to.path !== '/user-login') {
         const store = authStore();
         store.fetchUser();
         console.log('going to authenticated pages...');

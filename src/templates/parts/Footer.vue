@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer mt-4">
+    <footer class="footer mt-5">
         <div id="footer" class="container is-max-desktop p-32">
             <div class="content">
                 <div class="columns is-mobile">
