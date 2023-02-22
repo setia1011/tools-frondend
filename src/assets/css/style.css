@@ -41,6 +41,23 @@ body {
     bottom: 0;
 }
 
+/* v-select */
+::placeholder {
+    color: rgb(172, 170, 170) !important;
+}
+.v-select-x > .vs__dropdown-toggle, .v-tahun-s > .vs__dropdown-toggle {
+    border-radius: 4px 4px 4px 4px !important;
+}
+.vs__search, .vs__search:focus {
+    padding: 0.17em 0.5em !important;
+}
+.vs__selected {
+    padding: 0 0.3em !important;
+}
+.vs__dropdown-menu li {
+    padding-left: 0.55em !important;
+}
+
 /* vue-plyr */
 .plyr__controls {
     border: 1px solid #e1dfdf;

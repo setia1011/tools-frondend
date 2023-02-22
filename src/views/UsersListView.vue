@@ -1,5 +1,6 @@
 <template>
     <div id="main" class="container is-max-desktop p-32 mt-5">
+        <page-header></page-header>
         <h1 class="is-size-5 mb-5 has-text-weight-bold">Users List</h1>
         
         <div class="is-relative mb-5" style="min-height: 200px;">
@@ -44,6 +45,7 @@ import {
   InstagramLoader,
   ListLoader,
 } from 'vue-content-loader';
+import PageHeader from '@/components/PageHeader.vue';
 
 export default {
     name: 'UsersListView',
@@ -56,6 +58,7 @@ export default {
     BulletListLoader,
     InstagramLoader,
     ListLoader,
+        PageHeader,
 },
     data() {
         return {

@@ -1,5 +1,6 @@
 <template>
   <div id="main" ref="main" class="container is-max-desktop p-32 mt-5">
+    <page-header></page-header>
     <Loading v-model:active.sync="isLoading"
       :background-color="'rgb(247 247 247 / 84%)'"
       :opacity="1"

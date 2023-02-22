@@ -16,6 +16,8 @@ import VuePlyr from 'vue-plyr'
 // eslint-disable-next-line import/no-unresolved,n/no-missing-import
 import 'vue-plyr/dist/vue-plyr.css'
 
+import PageHeader from './components/PageHeader.vue'
+
 // lodash (_) for debouce
 var _ = require('lodash');
 
@@ -30,4 +32,7 @@ app.use(debounce)
 app.use(VueAxios, axios)
 // app.use(LoadingPlugin)
 app.use(VuePlyr)
+
+app.component('page-header', PageHeader)
+
 app.mount("#app")

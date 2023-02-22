@@ -28,6 +28,8 @@
                                 <router-link to="/qr-code" class="navbar-item">Qrcode Generator</router-link>
                                 <router-link to="/polaroid" class="navbar-item">Polaroid</router-link>
                                 <hr class="navbar-divider">
+                                <router-link to="/pustaka" class="navbar-item">Pustaka</router-link>
+                                <router-link to="/pustaka-admin" class="navbar-item">Pustaka (Administrator)</router-link>
                                 <router-link to="#" class="navbar-item has-text-danger">Peta Wilayah Indonesia</router-link>
                             </div>
                         </div>

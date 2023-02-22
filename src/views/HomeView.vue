@@ -1,5 +1,6 @@
 <template>
   <div id="main" class="container is-max-desktop p-32 mt-5">
+    <page-header></page-header>
     <div class="columns is-multiline">
           <div class="column is-half-desktop is-half-widescreen is-half-fullhd">
                 <div class="is-size-5 has-text-weight-bold mb-4">Bar</div>

@@ -1,5 +1,6 @@
 <template>
     <div id="main" class="container is-max-desktop p-32 mt-5">
+        <page-header></page-header>
         <button class="button is-small is-primary is-outlined mb-5" v-on:click="backTo">
             <span class="icon">
                 <i class="fa-thin fa-note"></i>
